@@ -13,11 +13,13 @@ def res_cmd(cmd):
 
 
 def dump(appname, dump_name):
-    original_filepath = "latest.dump"
-    dump_path = "./backups/{}.sql".format(dump_name).replace(" ", "-")
+    orig_file_path = "./latest.dump"
+    # dump_path = "./backups/{}.dump".format(dump_name).replace(" ", "-")
+    dump_file_path = "{}{}{}.dump".format(
+        conf.DROPBOX_PATH, conf.BACKUP_PATH, dump_name).replace(" ", "-")
 
-    if os.path.exists(dump_path):
-        raise ValueError("{} already exists!".format(dump_path))
+    if os.path.exists(dump_file_path):
+        raise ValueError("{} already exists!".format(dump_file_path))
 
     # Capture
     print("Capturing backup ...")
@@ -33,8 +35,8 @@ def dump(appname, dump_name):
 
     # Rename the file
     print("Renaming the dump file ...")
-    print("{} -> {}".format(original_filepath, dump_path))
-    cmd = "mv {} {}".format(original_filepath, dump_path)
+    print("{} -> {}".format(orig_file_path, dump_file_path))
+    cmd = "mv {} {}".format(orig_file_path, dump_file_path)
     res = res_cmd(cmd)
     print(res)
 

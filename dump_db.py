@@ -25,7 +25,6 @@ def main():
     )
 
     args = parser.parse_args()
-    print(args)
 
     utils.dump(appname, args.file)
 
