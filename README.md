@@ -9,6 +9,6 @@ Use your dropbox storage to backup and restore a database on your heroku applica
 
 # Usage
 ## Backup
- `python dump_db.py -f FILENAME`
+ `$ python dump_db.py -f FILENAME`
 ## Restore
- `python restore_db.py -f FILENAME`
+ `$ python restore_db.py -f FILENAME`
