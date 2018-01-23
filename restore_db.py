@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 from argparse import ArgumentParser
 from datetime import datetime
-import re
 
 import utils
 import conf
@@ -11,7 +10,6 @@ import conf
 def main():
     appname = conf.APP_NAME
     backup_folder_path = "{}{}".format(conf.DROPBOX_PATH, conf.BACKUP_PATH)
-    backup_folder_path = re.sub(r'[^/]+/?$', '', backup_folder_path)
 
     desc = """[Options]
     Detailed options -h or --help"""
@@ -33,8 +31,8 @@ def main():
     # Backup before restore
     utils.dump(appname, datetime.now())
 
-    backup_file_path = "{}{}".format(backup_folder_path, args.file)[len(conf.DROPBOX_PATH):]
-    print("Target backup file: {}".format(backup_file_path))
+    backup_file_path = "{}{}.dump".format(backup_folder_path, args.file)[len(conf.DROPBOX_PATH):]
+    print("Target backup file (on Dropbox): {}".format(backup_file_path))
     shared_link = utils.get_shared_link(backup_file_path).url.replace("dl=0", "dl=1")
     print("Backup file shared link: {}".format(shared_link))
 
