@@ -20,13 +20,13 @@ def dump(appname, dump_name):
         raise ValueError("{} already exists!".format(dump_path))
 
     # Capture
-    print("Capturing a backup ...")
+    print("Capturing backup ...")
     cmd = "heroku pg:backups:capture -a {}".format(appname)
     res = res_cmd(cmd)
     print(res)
 
     # Download a dump file
-    print("Downloading a backup ...")
+    print("Downloading the dump file ...")
     cmd = "heroku pg:backups:download -a {}".format(appname)
     res = res_cmd(cmd)
     print(res)
