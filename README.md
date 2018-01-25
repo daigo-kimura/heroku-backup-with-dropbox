@@ -4,7 +4,7 @@ Use your dropbox storage to backup and restore a database on your heroku applica
 # Installation
 1. Get your dropbox app key
 2. Set your dropbox home directory to `DROPBOX_PATH`
-3. Set a directory path for dump file storage
+3. Set a path to a dump file storage folder
 4. Install packages according to  `requirement.txt`
 
 # Usage
