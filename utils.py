@@ -14,9 +14,17 @@ def res_cmd(cmd):
 
 def dump(appname, dump_name):
     orig_file_path = "./latest.dump"
-    # dump_path = "./backups/{}.dump".format(dump_name).replace(" ", "-")
-    dump_file_path = "{}{}{}.dump".format(
-        conf.DROPBOX_PATH, conf.BACKUP_PATH, dump_name).replace(" ", "-")
+
+    dump_dir = "{}/{}".format(conf.DROPBOX_PATH, conf.BACKUP_PATH)
+    dump_file_path = "{}/{}.dump".format(dump_dir, dump_name).replace(" ", "-")
+
+    if not os.path.exists(dump_dir):
+        raise ValueError("Directory not exist!: {}".format(dump_dir))
+    if os.path.isfile(dump_file_path):
+        raise ValueError("File already exist!: {}".format(dump_file_path))
+
+    print("Dump file path")
+    print(dump_file_path)
 
     if os.path.exists(dump_file_path):
         raise ValueError("{} already exists!".format(dump_file_path))
